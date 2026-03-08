@@ -284,7 +284,7 @@ export default function Page(){
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link href={'/home'} 
             
-            className="bg-white text-purple-700 hover:bg-gray-100 gap-2 shadow-xl hover:shadow-2xl transition-all"
+            className="bg-white text-rose-600 flex items-center px-2 py-1 rounded-md hover:bg-gray-100 gap-2 shadow-xl hover:shadow-2xl transition-all"
           >
             Join InClove <Useicon icon={ArrowRight} className="w-5 h-5" />
           </Link>

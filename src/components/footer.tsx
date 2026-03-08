@@ -6,9 +6,9 @@ import { HugeiconsIcon, IconSvgElement } from "@hugeicons/react";
 import Link from "next/link";
 
 const socialLinks = {
-    instagram : 'https://www.instagram.com/inclove_official?igsh=ZGsxdWg1OGk4eW8z',
+    instagram : 'https://www.instagram.com/inclove_official?igsh=MXgwaGg3emZuMHM=',
     facebook : '#',
-    discord : 'https://discord.gg/smQBzDXD7y',
+    discord : 'https://discord.gg/cspQDJett4',
     x : '#',
 }
 
@@ -38,9 +38,9 @@ export default function Footer() {
                     
                     {/* Social Icons - Using the same inline SVGs for consistency */}
                     <div className="flex gap-5 mt-2">
-                        <SocialIcon href={socialLinks.facebook} icon={Facebook01Icon}/>
+                        {/* <SocialIcon href={socialLinks.facebook} icon={Facebook01Icon}/> */}
                         <SocialIcon href={socialLinks.instagram} icon={InstagramIcon}/>
-                        <SocialIcon href={socialLinks.x} icon={TwitterIcon}/>
+                        {/* <SocialIcon href={socialLinks.x} icon={TwitterIcon}/> */}
                         <SocialIcon href={socialLinks.discord} icon={DiscordIcon}/>
 
 
