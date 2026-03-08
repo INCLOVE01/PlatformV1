@@ -36,12 +36,13 @@ export default function MatchCardAnimation (){
               <Commons className={''} title="Place" support="place" no="1" src={"https://img.icons8.com/color/48/beach.png"} alt={"place"} />
             </div>
 
-            <motion.div ref={ref2} style={{ rotate: inView2 ? rotate2 : '0deg' }} transition={{ease:'easeInOut'}} className={`relative w-xs aspect-[2/3] bg-red-100  rounded-3xl overflow-hidden border outline-2 outline-slate-200 shadow-md md:outline-4 ${inview3 ? 'card-left' : ''}`}>
-              <Image src={'/images/pp6.jpg'} alt="img" width={300} height={300} className="w-full h-full object-cover object-top"/> 
-              <div className="absolute z-10 bottom-0 left-0 w-full h-fit py-3 px-3 text-white backdrop-brightness-90 flex flex-col sm:px-6 sm:py-4">
+            {/* first card */}
+            <motion.div ref={ref2} style={{ rotate: inView2 ? rotate2 : '0deg' }} transition={{ease:'easeInOut'}} className={`relative w-xs aspect-2/3 bg-red-100  rounded-3xl overflow-hidden border outline-2 outline-slate-200 shadow-md md:outline-4 ${inview3 ? 'card-left' : ''}`}>
+              <Image src={'/images/women-with-prosthetic-arm-portrait.jpg'} alt="img" width={300} height={300} className="w-full h-full object-cover object-top"/> 
+              <div className="absolute z-10 bottom-0 left-0 w-full h-fit py-3 px-3 text-white backdrop-brightness-90 flex flex-col text-sm md:text-xl sm:px-6 sm:py-4">
                 <div className="flex items-end gap-2">
-                  <span className="text-xl font-medium flex items-center gap-2 md:text-3xl">Irene Jae,</span>
-                  <span className=" text-lg md:text-xl">21</span>
+                  <span className="font-medium flex items-center gap-2 ">Irene Jae,</span>
+                  <span className=" ">21</span>
                   <HugeiconsIcon icon={IdVerifiedFreeIcons} fill="#7AA4FF"/>
                 </div>
                 <span>3.5km away</span>
@@ -49,12 +50,14 @@ export default function MatchCardAnimation (){
               
               </div> 
             </motion.div>
-            <motion.div ref={ref1} style={{ rotate: inView1 ? rotate1 : '0deg' }} transition={{ease:'easeInOut'}} className={`relative w-xs aspect-[2/3] bg-slate-100 rounded-3xl overflow-hidden border outline-2 outline-slate-200 shadow-md md:outline-4 ${inview3 ? 'card-right' : ''}`}>
-              <Image src={'/images/pp2.jpg'} alt="img" width={300} height={300} className="w-full h-full object-cover object-top "/> 
-              <div className="absolute z-10 bottom-0 left-0 w-full h-fit py-3 px-3 text-white backdrop-brightness-90 flex flex-col sm:px-6 sm:py-4">
+
+            {/* second card */}
+            <motion.div ref={ref1} style={{ rotate: inView1 ? rotate1 : '0deg' }} transition={{ease:'easeInOut'}} className={`relative w-xs aspect-2/3 bg-slate-100 rounded-3xl overflow-hidden border outline-2 outline-slate-200 shadow-md md:outline-4 ${inview3 ? 'card-right' : ''}`}>
+              <Image src={'/images/man-smiling.jpg'} alt="img" width={300} height={300} className="w-full h-full object-cover object-top "/> 
+              <div className="absolute z-10 bottom-0 left-0 w-full h-fit py-3 px-3 text-white backdrop-brightness-90 flex flex-col text-sm md:text-xl sm:px-6 sm:py-4">
                 <div className="flex items-end gap-2">
-                  <span className="text-xl font-medium flex items-center gap-2 md:text-3xl">Tom Harvey,</span>
-                  <span className=" text-lg md:text-xl">26</span>
+                  <span className=" font-medium flex items-center gap-2 md:">Tom Harvey,</span>
+                  <span className=" ">26</span>
                   <HugeiconsIcon icon={IdVerifiedFreeIcons} fill="#7AA4FF"/>
                 </div>
                 <span>3.5km away</span>

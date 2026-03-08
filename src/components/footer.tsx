@@ -15,7 +15,7 @@ const socialLinks = {
 const footerLink = {
     about : '/about-us',
     resources : '#',
-    contact : '#',
+    contact : '/contact-us',
     joinUs : '#'
 }
 

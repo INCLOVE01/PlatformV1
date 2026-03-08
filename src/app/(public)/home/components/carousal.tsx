@@ -6,7 +6,7 @@ import AutoScroll from "embla-carousel-auto-scroll";
 import Image from "next/image";
 
 export default function HomeCarousal(){
-    const arr1 = ['pp1.jpg','pp2.jpg','pp3.jpg','pp4.jpg','pp5.jpg']
+    const arr1 = ['couple-on-wheelchair-beach.jpg','girl-with-white-hat.jpg','couple-with-butterfly-eyes.jpg','goth-woman.jpg','woman-on-wheelchair-beige.jpg']
     
 
     return(
@@ -15,8 +15,8 @@ export default function HomeCarousal(){
                 <CarouselContent className={''}>
                     {arr1.map((item,key)=>(
                         <CarouselItem key={key} className={'md:basis-1/2 lg:basis-1/3'}>
-                            <div className="w-full h-64 bg-slate-100 overflow-hidden" >
-                                <Image src={`/images/${item}`} alt="pp" width={300} height={250} className="w-full h-full object-cover object-center" />
+                            <div className="w-full h-96 bg-slate-100 overflow-hidden" >
+                                <Image src={`/images/${item}`} alt="pp" width={400} height={300} className="w-full h-full object-cover object-center" />
                             </div>
                         </CarouselItem>
                     ))}

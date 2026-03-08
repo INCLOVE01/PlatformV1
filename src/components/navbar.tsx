@@ -46,7 +46,8 @@ export default function MainNavbar() {
 
 
     return (
-        <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-100 w-fit h-fit flex items-center gap-1 p-1.5 bg-white/60 backdrop-blur-xl border border-white/40 shadow-xl rounded-full">
+<header className="fixed top-0 left-0 z-100 w-full h-fit py-2 sm:py-4">
+            <nav className=" w-fit h-fit flex items-center m-auto gap-1 p-1.5 bg-white/60 backdrop-blur-xl border border-white/40 shadow-xl rounded-full">
             {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 
@@ -55,7 +56,7 @@ export default function MainNavbar() {
                         key={link.href}
                         href={link.href}
                         onClick={(e) => handleNavigate(e, link.href)}
-                        className="relative px-4 py-2 rounded-full text-sm no-underline group"
+                        className="relative px-4 py-2 rounded-full text-sm w-fit no-underline group"
                     >
                         <span className={`relative z-20 transition-colors duration-300 ${isActive ? 'text-primary font-bold' : 'text-neutral-600 group-hover:text-neutral-900'}`}>
                             {link.name}
@@ -71,5 +72,6 @@ export default function MainNavbar() {
                 );
             })}
         </nav>
+</header>
     );
 }

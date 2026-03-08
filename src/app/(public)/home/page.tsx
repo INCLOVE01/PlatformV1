@@ -3,11 +3,12 @@ import React from "react";
 import Image from "next/image";
 import HomeCarousal from "./components/carousal";
 import { Button } from "@/components/ui/button";
-import {  ArrowUpRight01FreeIcons } from "@hugeicons/core-free-icons";
+import {  ArrowUpRight01FreeIcons, IdVerifiedFreeIcons, Tick, Tick03FreeIcons, TickDouble03FreeIcons } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 
 import MatchCardAnimation from "./components/matchCard";
 import WaitlistForm from "@/components/forms/waitlist";
+import Useicon from "@/components/UseIcon";
 
 export default function Page(){
     return(
@@ -96,12 +97,12 @@ export default function Page(){
                     {/* bento */}
                     <div className="w-full max-w-5xl bg-slate-100 grid grid-flow-row-dense grid-cols-2 auto-rows-[4rem] gap-2 rounded-xl p-4 mt-10 md:mt-16 md:grid-cols-4 md:gap-4">
 
-                        <div className="relative w-full h-full col-span-2 row-span-5 flex flex-col items-center pb-6 bg-[#9DBFFF] rounded-md overflow-hidden md:col-span-2 md:row-span-6">
+                        <div className="relative w-full h-full col-span-2 row-span-5 flex flex-col items-center pb-6 bg-neutral-300 rounded-md overflow-hidden md:col-span-2 md:row-span-6">
                         <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-xs h-72 m-auto rounded-xl outline-4 outline-white/80 overflow-hidden shadow-2xl md:h-96">
-                            <Image src={'/images/pp1.jpg'} alt="img" width={300} height={300} className="w-full h-full object-cover"/>
+                            <Image src={'/images/girl-with-white-hat.jpg'} alt="img" width={300} height={300} className="w-full h-full object-cover"/>
                             <div className="absolute bottom-0 left-0 w-full h-fit bg-white/10 backdrop-blur-2xs text-white  px-4 py-4">
                             <span className="text-xl font-bold flex items-center gap-2 ">Emma Johan, 24 
-                                {/* <VerifiedIcon/> */}
+                                <Useicon icon={Tick03FreeIcons}/>
                             </span>
                             <span>Chicago</span>
                             <Button className={'w-full mt-2 bg-[#a53860] text-white'}>View Profile</Button>
@@ -118,9 +119,7 @@ export default function Page(){
                             <span className="text-lg font-semibold">Location Sharing Controls</span>
                             <p className="text-sm">Choose if/when to share precise location data—and only with specific matches or trusted contacts</p>
                         </div>
-                        <div>
-                            <Image alt="location" width={200} height={100} src="https://www.shutterstock.com/shutterstock/photos/2254949983/display_1500/stock-vector-a-continuous-one-line-drawing-of-a-google-map-view-in-an-urban-area-route-directions-and-locations-2254949983.jpg"/>
-                        </div>
+
                         </div>
 
                         <div className="w-full h-full col-span-1 row-span-3 bg-[#bde0fe] border flex flex-col items-start justify-start gap-1 p-3 flex-wrap rounded-lg sm:col-span-1">
