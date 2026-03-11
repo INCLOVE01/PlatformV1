@@ -63,6 +63,7 @@ export default function WaitlistForm() {
       setAccessToken(token)
       if(message == 'exists') setSubmissionStatus('exists')
       else setSubmissionStatus("success")
+    form.reset()
     } catch (err) {
         console.error("Submission error:", err)
         setSubmissionStatus("error")

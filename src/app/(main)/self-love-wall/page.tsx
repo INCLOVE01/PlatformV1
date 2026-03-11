@@ -1,38 +1,63 @@
 'use client'
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 
-export default function Page(){
-    const router = useRouter()
-    return(
-        <>
-            <div className="flex flex-col items-center justify-center min-h-screen px-4 text-center">
-      <h1 className="text-6xl font-bold text-neutral-900 mb-4">404</h1>
-      <h2 className="text-2xl font-semibold text-neutral-700 mb-6">
-        Oops! Connection Error
-      </h2>
-      <p className="text-neutral-500 mb-8 max-w-md">
-        The page is currently down and we are working hard to restore it.
-      </p>
+import { useState } from "react";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import CreatePostDialog from "./components/createPostDialog";
+import WallDataContainer from "./components/wallData";
+import { useGlobalStats } from "@/services/useGetTotalLikes";
+import Useicon from "@/components/UseIcon";
+import { Loader } from "@hugeicons/core-free-icons";
 
-      <div className="flex gap-4">
-        {/* Back Button */}
-        <button
-          onClick={() => router.back()}
-          className="px-6 py-2 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-800 transition-colors"
-        >
-          Go Back
-        </button>
+export default function SelfLoveWall() {
+  const [filter, setFilter] = useState('recent');
+  const { data: stats, isFetching: statsFetching } = useGlobalStats();
 
-        {/* Home Link */}
-        <Link
-          href="/"
-          className="px-6 py-2 rounded-full bg-primary text-white hover:opacity-90 transition-opacity"
-        >
-          Return Home
-        </Link>
+  return (
+    <div className="min-h-screen bg-[#FAFAFA] text-slate-900 selection:bg-rose-100">
+      <div className="max-w-5xl mx-auto p-6 lg:p-12 space-y-12">
+        
+        {/* HEADER SECTION */}
+        <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-slate-200 pb-8">
+          <div className="space-y-2">
+            <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+              Wall Of <span className="text-rose-400">Love</span>
+            </h1>
+            <p className="text-slate-500 max-w-md leading-snug">
+              A sanctuary for shared light and self-affirmation. Anonymous, safe, and supportive.
+            </p>
+          </div>
+
+          <div className="w-full max-w-md flex items-center justify-between md:justify-end gap-4">
+            <div className="flex items-center gap-2">
+              <div className="bg-rose-50 rounded-md p-2 outline outline-rose-200 text-center min-w-[80px]">
+                <span className="text-lg font-bold text-rose-500 flex items-center justify-center">
+                  {statsFetching ? <Useicon icon={Loader} className="w-4 h-4 animate-spin mr-1" /> : null}
+                  {stats?.total_likes || 0}
+                </span>
+                <p className="text-[10px] uppercase font-bold text-rose-400">Total Loves</p>
+              </div>
+              <div className="bg-muted rounded-md p-2 border text-center min-w-[80px]">
+                <span className="text-lg font-bold text-slate-700">{stats?.total_thoughts || 0}</span>
+                <p className="text-[10px] uppercase font-bold text-slate-400">Thoughts</p>
+              </div>
+            </div>
+            <CreatePostDialog />
+          </div>
+        </header>
+
+        {/* FILTERS */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <Tabs value={filter} onValueChange={setFilter} className="w-full sm:w-auto">
+            <TabsList className="bg-slate-100 p-1 border border-slate-200 rounded-lg">
+              <TabsTrigger value="recent" className="px-6">Recent</TabsTrigger>
+              <TabsTrigger value="likes" className="px-6">Most Loved</TabsTrigger>
+            </TabsList>
+          </Tabs>
+        </div>
+
+        {/* DATA CONTAINER - Key prop handles automatic page reset on filter change */}
+        <WallDataContainer key={filter} filter={filter} />
       </div>
     </div>
-        </>
-    )
-}   
+  );
+}

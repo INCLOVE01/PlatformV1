@@ -1,12 +1,14 @@
 import { supabaseClient } from "@/server/client";
 import { WaitlistFormValues } from "@/types/waitlist";
 import { db } from "@/db/db";
+import { withRateLimit } from "@/lib/rateLimitGuard";
 
 
 export async function processWaitlistSubmission(values: WaitlistFormValues) {
-  const emailNormalized = values.email.toLowerCase().trim();
+  const action = await withRateLimit(async()=>{
+      const emailNormalized = values.email.toLowerCase().trim();
 
-  // 1. Local Check (Still keep this for instant feel)
+  // 1. Local Check (to avoid hitting db)
   const local = await db.identities.where('email').equals(emailNormalized).first();
   if (local?.inclove_token) return { token: local.inclove_token, message: 'exists' };
 
@@ -26,6 +28,8 @@ export async function processWaitlistSubmission(values: WaitlistFormValues) {
   await syncToLocalDb(emailNormalized, token);
 
   return { token, message: 'created' };
+  })
+  return await action()
 }
 
 

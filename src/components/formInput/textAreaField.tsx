@@ -35,7 +35,7 @@ export function TextAreaField<T extends FieldValues>({
             <InputGroup>
               <InputGroupTextarea 
                 {...field} 
-                className="min-h-24 resize-none" 
+                className="h-24 max-h-32 scroll-auto text-sm" 
                 maxLength={maxLength}
               />
               {(showCharCount || showWordCount) && (

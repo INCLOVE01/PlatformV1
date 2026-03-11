@@ -1,8 +1,14 @@
 import {z} from 'zod'
 
 export const PostSchema = z.object({
-    id : z.string(),
-    title : z.string().min(1)
+    uid : z.string(),
+    content:z.object(), 
+    createdAt:z.number(),
+    badge:z.string(),
+    email : z.email(),
+    token : z.string(),
+    fullName : z.string(),
+    likes : z.number()
 
 })
 
