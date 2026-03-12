@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from "react";
-import { supabaseClient } from "@/server/client";
 import { db } from "@/db/db";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "motion/react";
@@ -10,6 +9,7 @@ import Useicon from "@/components/UseIcon";
 import { safeRPC } from "@/server/actions";
 import {  useQueryClient } from "@tanstack/react-query";
 import { GlobalStats } from "@/services/useGetTotalLikes";
+import { Identity } from "@/models/identity";
 
 export default function LikeButton({ postId, initialLikes, hasLikedInitial }: { 
   postId: string, 
@@ -36,7 +36,7 @@ export default function LikeButton({ postId, initialLikes, hasLikedInitial }: {
 
     try {
       // 3. IDENTITY CHECK (Using the working filter method)
-      const activeUser = await db.identities.filter(user => user.isActive === true).first();
+      const activeUser= await db.identities.filter(user => user.isActive === true).first() as Identity | undefined;
 
       if (!activeUser?.email) {
         toast.error("Please sign in to like thoughts!");
@@ -79,14 +79,14 @@ export default function LikeButton({ postId, initialLikes, hasLikedInitial }: {
 
       setCount(data.new_count);
 
-    } catch (err: any) {
+    } catch (err:unknown) {
       console.error("Like Toggle Failed:", err);
       
       // ROLLBACK UI ON FAILURE
       setLiked(previousLiked);
       setCount(previousCount);
       
-      if (err.message !== "UNAUTHORIZED") {
+      if (err instanceof Error&&err.message !== "UNAUTHORIZED") {
         toast.error(err.message.includes("foreign key") 
           ? "Post no longer exists." 
           : "Cloud sync failed.");

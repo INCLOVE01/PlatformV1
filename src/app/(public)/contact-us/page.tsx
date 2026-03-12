@@ -68,7 +68,7 @@ export default function ContactPage() {
 }
 
 // Simple Tile Component
-function ContactTile({ title, desc, action }) {
+function ContactTile({ title, desc, action }:{ title:string, desc:string, action:string }) {
   return (
     <div className="p-6 border border-gray-200 rounded-2xl hover:border-indigo-200 transition-colors">
       <h3 className="font-semibold text-lg">{title}</h3>

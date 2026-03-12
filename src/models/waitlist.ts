@@ -3,7 +3,7 @@ import {z} from 'zod'
 export const WaitlistSchema = z.object({
     id : z.string(),
     fullName : z.string().min(1),
-    email : z.email(),
+    email : z.string().email(),
     
 
 })
