@@ -8,5 +8,4 @@ export interface Post  {
     hasLikedInitial : boolean, 
     created_at: string
 
-
 }

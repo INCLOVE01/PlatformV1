@@ -4,25 +4,28 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Post } from "@/types/post";
-import { motion } from 'motion/react'
+import { motion,Variants } from 'motion/react'
 import LikeButton from "./likeButton";
 
 // 1. Define animation variants for the cards
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { 
     opacity: 1, 
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" } 
+    y: 0, 
+    transition: { 
+      duration: 0.5, 
+      ease: "easeOut" // Ensure this is a valid string or it will still error
+    } 
   },
   exit: { 
     opacity: 0, 
     scale: 0.95, 
     transition: { duration: 0.2 } 
-  }
+  },
 };
 
-export default function PostCard({ id, full_name, badge, content, likes_count, identity_id, hasLikedInitial }: Post) {
+export default function PostCard({ id, full_name, badge, content, likes_count, hasLikedInitial }: Post) {
     return (
         <motion.div
             variants={cardVariants}
@@ -36,7 +39,7 @@ export default function PostCard({ id, full_name, badge, content, likes_count, i
                         {badge}
                     </Badge>
                 </CardHeader>
-                <CardContent className="text-sm text-slate-600 leading-relaxed min-h-[80px]">
+                <CardContent className="text-sm text-slate-600 leading-relaxed min-h-20">
                     {content}
                 </CardContent>
                 <CardFooter className="pt-0 flex justify-between items-center">

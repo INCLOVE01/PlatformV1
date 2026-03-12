@@ -24,8 +24,9 @@ import { TextAreaField } from "@/components/formInput/textAreaField";
 import Useicon from "@/components/UseIcon";
 import { LoaderCircle, PlusSignIcon, Sparkle } from "@hugeicons/core-free-icons";
 
+
 const postSchema = z.object({
-  email: z.string().email("Please use a valid email"),
+  email: z.string().email({message:"Please use a valid email"}),
   content: z.string()
     .min(10, "Share a bit more (min 10 chars)")
     .max(1000, "Keep it under 200 words"), 
@@ -42,20 +43,21 @@ export default function CreatePostDialog() {
 
   // 1. Reactive Hook for UI
   const activeIdentity = useLiveQuery(() => 
-    db.identities.where('isActive').equals(1).first()
+    db.identities.where('isActive').equals(1).first() 
   );
+
 
   const form = useForm({
     resolver: zodResolver(postSchema),
     values: { 
-      email: activeIdentity?.email || "",
+      email: (activeIdentity?.email) || '',
       content: "",
       badge: "Self Love"
     }
   });
 
 
-const onSubmit = async (values) => {
+const onSubmit = async (values:{ email: string; content: string; badge: string; }) => {
   setIsSyncing(true);
   try {
     const result = await submitPostAction(values);
@@ -103,7 +105,7 @@ const onSubmit = async (values) => {
           <span>Share a Thought</span>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-[420px] p-0 overflow-hidden border-none shadow-2xl">
+      <DialogContent className="sm:max-w-105 p-0 overflow-hidden border-none shadow-2xl">
         <div className="bg-rose-500 p-6 text-white">
           <DialogHeader>
             <div className="flex items-center gap-3 mb-2">
